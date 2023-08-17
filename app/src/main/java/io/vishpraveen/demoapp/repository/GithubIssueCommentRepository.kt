@@ -20,11 +20,9 @@ class GithubIssueCommentRepository @Inject constructor(
 
     override suspend fun getComments(commentId: String): Flow<List<IssueCommentsModel>?> = flow {
         issueCommentDao.getAllComments(commentId).collect {
-            if(it?.comments.isNullOrEmpty()) {
+            if(it == null) {
                 getCommentsFromRemote(commentId)
-            } else {
-                emit(it?.comments)
-            }
+            } else emit(it.comments)
         }
     }
 
