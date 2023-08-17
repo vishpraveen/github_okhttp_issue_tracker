@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.vishpraveen.demoapp.model.IssueDetailModel
-import io.vishpraveen.demoapp.repository.GithubIssueRepository
+import io.vishpraveen.demoapp.repository.GithubIssueDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val repository: GithubIssueRepository
+    private val repository: GithubIssueDataSource
 ): ViewModel() {
 
     var loader = MutableLiveData<Boolean>()

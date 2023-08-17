@@ -13,11 +13,11 @@ import javax.inject.Inject
 class GithubIssueRepository @Inject constructor(
     retrofit: Retrofit,
     db:DemoAppDatabase
-) {
+): GithubIssueDataSource {
     private val client = retrofit.create(GithubIssueClient::class.java)
     private val issueDetailDao: IssueDetailDao by lazy { db.issueDetailDao() }
 
-    suspend fun getIssues(): Flow<List<IssueDetailModel>?> = flow {
+    override suspend fun getIssues(): Flow<List<IssueDetailModel>?> = flow {
         issueDetailDao.getAllIssues().collect {
             if(it.isEmpty()) {
                 getIssuesFromRemote()

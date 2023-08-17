@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.vishpraveen.demoapp.model.IssueCommentsModel
 import io.vishpraveen.demoapp.model.IssueDetailModel
+import io.vishpraveen.demoapp.repository.GithubIssueCommentDataSource
 import io.vishpraveen.demoapp.repository.GithubIssueCommentRepository
 import io.vishpraveen.demoapp.repository.GithubIssueRepository
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CommentActivityViewModel @Inject constructor(
-    private val repository: GithubIssueCommentRepository
+    private val repository: GithubIssueCommentDataSource
 ): ViewModel() {
 
     var loader = MutableLiveData<Boolean>()

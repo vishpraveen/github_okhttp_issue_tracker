@@ -14,11 +14,11 @@ import javax.inject.Inject
 class GithubIssueCommentRepository @Inject constructor(
     retrofit: Retrofit,
     db:DemoAppDatabase
-) {
+): GithubIssueCommentDataSource {
     private val client = retrofit.create(GithubIssueClient::class.java)
     private val issueCommentDao: IssueCommentDao by lazy { db.issueCommentDao() }
 
-    suspend fun getComments(commentId: String): Flow<List<IssueCommentsModel>?> = flow {
+    override suspend fun getComments(commentId: String): Flow<List<IssueCommentsModel>?> = flow {
         issueCommentDao.getAllComments(commentId).collect {
             if(it?.comments.isNullOrEmpty()) {
                 getCommentsFromRemote(commentId)
