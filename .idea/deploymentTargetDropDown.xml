@@ -2,6 +2,24 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CommentActivityViewModelTest">
+        <State />
+      </entry>
+      <entry key="CommentActivityViewModelTest.getCommentsTest">
+        <State />
+      </entry>
+      <entry key="GithubIssueRepositoryTest.getIssuesTest returns list">
+        <State />
+      </entry>
+      <entry key="GithubIssueRepositoryTest.getIssuesTest returns list after fetching from remote">
+        <State />
+      </entry>
+      <entry key="MainActivityViewModelTest.getIssuesTest">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
       <entry key="democompose">
         <State />
       </entry>

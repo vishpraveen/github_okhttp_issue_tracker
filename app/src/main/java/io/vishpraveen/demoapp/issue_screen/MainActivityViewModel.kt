@@ -24,12 +24,12 @@ class MainActivityViewModel @Inject constructor(
         getIssues()
     }
 
-    private fun getIssues() {
+    internal fun getIssues() {
         loader.value = true
         viewModelScope.launch(Dispatchers.IO) {
             repository.getIssues().collect {
                 loader.postValue(false)
-                issues.postValue(it as MutableList<IssueDetailModel>)
+                issues.postValue(it.toMutableList())
             }
         }
     }

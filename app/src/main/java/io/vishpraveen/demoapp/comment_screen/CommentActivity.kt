@@ -2,16 +2,13 @@ package io.vishpraveen.demoapp.comment_screen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import io.vishpraveen.demoapp.RecyclerViewClickListener
 import io.vishpraveen.demoapp.databinding.ActivityCommentBinding
 import io.vishpraveen.demoapp.model.IssueCommentsModel
 import io.vishpraveen.demoapp.util.Constants.COMMENT_ID
-import io.vishpraveen.demoapp.util.ExtractCommentId
 
 @AndroidEntryPoint
 class CommentActivity : AppCompatActivity() {
@@ -44,9 +41,9 @@ class CommentActivity : AppCompatActivity() {
             loader.observe(this@CommentActivity) {
                 binding.progressCircular.visibility = if (it) View.VISIBLE else View.GONE
             }
-            issues.observe(this@CommentActivity) {
-                comments.clear()
-                comments.addAll(it)
+            comments.observe(this@CommentActivity) {
+                this@CommentActivity.comments.clear()
+                this@CommentActivity.comments.addAll(it)
                 issueAdapter.notifyDataSetChanged()
             }
         }
